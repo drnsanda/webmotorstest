@@ -1,0 +1,107 @@
+<section class="search-holder">
+    <header class="search-holder-header">
+        <ul class="search-nav-links">
+            <li [class.search-nav-links-item-active]="selectedType=='carros'" (click)="selectSearchType('carros')" class="search-nav-links-item">Carros</li>
+            <li (click)="selectSearchType('motos')" [class.search-nav-links-item-active]="selectedType=='motos'"  class="search-nav-links-item">Motos</li>
+        </ul>
+        <div class="sell-my-car-btn-container">
+            <button class="c-btn sell-my-car-btn">Vender meu carro</button>
+        </div>
+    </header>
+    <form class="search-form">
+        <div class="form-group-row">
+            <div class="form-group-row-item">
+                <label  class="label-container">
+
+                    <input class="custom-check-input" type="checkbox" value="novo" />
+                    <span class="checkmark"></span>
+                    Novos
+                </label>
+            </div>
+            <div class="form-group-row-item">
+                <label class="label-container">
+                    <input class="custom-check-input" type="checkbox" value="usados" />
+                    <span class="checkmark"></span>
+                    Usados
+                </label>
+            </div>
+        </div>
+        <div style="margin-bottom: 10px;" class="c-row">
+            <div class="c-col-6">
+                <div><label class="custom-input-with-label">
+                        <span class="custom-select">Onde:</span>
+                        <input style="border-right: 1px solid black;;" type="text" placeholder="São Paulo -SP" />
+                        <label class="custom-select-with-label no-border ">
+                            <span class="custom-select">Raio:</span>
+                            <select id="range-selection">
+                                <option>1000Km</option>
+                                <option>300Km</option>
+                            </select>
+                        </label>
+                    </label></div>
+
+
+            </div>
+            <div class="c-col-6">
+                <div class="c-row">
+                    <div class="c-col-6">
+                        <div><label class="custom-select-with-label c-mx-end">
+                                <span class="custom-select">Marca:</span>
+                                <select (change)="onSelectMakeChange($event)" id="makes-selection">
+                                    <option [value]="item.ID" *ngFor="let item of makes;index as i;">{{item.Name}}
+                                    </option>
+                                </select></label></div>
+                    </div>
+                    <div class="c-col-6">
+                        <div><label class="custom-select-with-label c-mx-end">
+                                <span class="custom-select">Modelo:</span>
+                                <select (change)="onSelectModelChange($event)" 
+                                    id="models-selection">
+                                    <option [value]="item.ID" *ngFor="let item of models;index as i;">{{item.Name}}
+                                    </option>
+
+                                </select></label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-row">
+            <div class="c-col-6">
+                <div class="c-row">
+                    <div class="c-col-6">
+                        <div><label class="custom-select-with-label">
+
+                                <select class="c-w-100" id="years-selection">
+                                    <option selected value="-">Ano 2020</option>
+                                    <option>2019</option>
+                                </select></label></div>
+                    </div>
+                    <div class="c-col-6">
+                        <div><label class="custom-select-with-label">
+
+                                <select class="c-w-100" id="price-selection">
+                                    <option selected value="-">Faixa de Preço</option>
+                                    <option>120.000R - 220.000R</option>
+                                </select></label></div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-col-6">
+                <div><label class="custom-select-with-label c-mx-end">
+                        <span style="padding-left: 10px;">Versão</span>
+                        <select class="c-w-100" id="versions-selection">
+                            <option [value]="item.ID" *ngFor="let item of versions;index as i;">{{item.Name}}</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px;" class="submit-row">
+            <h6 class="advanced-search-link"> > Busca Avançada</h6>
+            <div class="more-options">
+                <h6 class="clean-filters-btn">Limpar filtros</h6>
+                <button type="button" class="c-btn view-offers-btn">VER OFERTAS</button>
+            </div>
+        </div>
+    </form>
+</section>
